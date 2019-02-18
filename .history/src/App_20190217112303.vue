@@ -1,22 +1,25 @@
 <template>
   <div>
-    <router-view></router-view>
+    R
+    <Loing></Loing>
   </div>
 </template>
 
 <script>
+import HelloWorld from './components/HelloWorld.vue'
+import Loing from './components/Loing.vue'
+
 export default {
-  name: "app",
-  components: {}
-};
+  name: 'app',
+  components: {
+    HelloWorld,Loing
+  }
+}
 </script>
 
 <style>
-.loing {
-  padding-top: 20rem;
-}
 #app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
