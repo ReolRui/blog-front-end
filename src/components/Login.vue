@@ -1,57 +1,31 @@
 
 <template>
   <Form ref="formCustom" :model="formCustom" :rules="ruleCustom" :label-width="80">
-    <FormItem label="用户名" prop="name">
-      <Input v-model="formCustom.name"></Input>
-    </FormItem>
     <FormItem label="邮箱" prop="mail">
-      <Input v-model="formCustom.mail" search enter-button="发送验证码"></Input>
+      <Input v-model="formCustom.mail"></Input>
     </FormItem>
-    <FormItem label="验证码" prop="code">
-      <Input type="text" v-model="formCustom.code" number></Input>
-    </FormItem>
+
     <FormItem label="密码" prop="passwd">
       <Input type="password" v-model="formCustom.passwd"></Input>
-    </FormItem>
-    <FormItem label="重复密码" prop="passwdCheck">
-      <Input type="password" v-model="formCustom.passwdCheck"></Input>
     </FormItem>
 
     <FormItem>
       <Button type="primary" @click="handleSubmit('formCustom')">Submit</Button>
-      <Button @click="handleReset('formCustom')" style="margin-left: 8px">Reset</Button>
     </FormItem>
   </Form>
 </template>
 <script>
 export default {
   data() {
-    const validatePass = (rule, value, callback) => {
-      if (value === "") {
-        callback(new Error("Please enter your password"));
-      } else {
-        if (this.formCustom.passwdCheck !== "") {
-          // 对第二个密码框单独验证
-          this.$refs.formCustom.validateField("passwdCheck");
-        }
-        callback();
-      }
-    };
-    const validatePassCheck = (rule, value, callback) => {
-      if (value !== this.formCustom.passwd) {
-        callback(new Error("两次输入密码不一致"));
-      } else {
-        callback();
-      }
-    };
     const validateCode = (rule, value, callback) => {
+      // 模拟异步验证效果
       if (!value) {
-        return callback(new Error("Age cannot be empty"));
+        return callback(new Error("请填写验证码"));
       }
       // 模拟异步验证效果
       setTimeout(() => {
         if (!Number.isInteger(value)) {
-          callback(new Error("Please enter a numeric value"));
+          callback(new Error("请输入验证码"));
         } else {
           if (value < 18) {
             callback(new Error("Must be over 18 years of age"));
@@ -64,43 +38,48 @@ export default {
 
     return {
       formCustom: {
-        name: "",
         passwd: "",
-        passwdCheck: "",
-        mail: "",
-        code: ""
+
+        mail: ""
       },
       ruleCustom: {
         passwd: [{ required: true, message: "请输入密码", trigger: "blur" }],
-        passwdCheck: [
-          { required: true, message: "请再次输入密码", trigger: "blur" },
-          { validator: validatePassCheck, trigger: "blur" }
-        ],
-        name: [{ required: true, message: "请输入姓名", trigger: "blur" }],
+
         mail: [
           { required: true, message: "请输入邮箱", trigger: "blur" },
           { type: "email", message: "邮箱格式错误", trigger: "blur" }
-        ],
-        code: [
-          { required: true, message: "请输入邮箱验证码", trigger: "blur" },
-          { validator: validateCode, trigger: "blur" }
         ]
       }
     };
   },
   methods: {
     handleSubmit(name) {
-      this.$refs[name].validate(valid => {
+      this.$refs.formCustom.validate(valid => {
         if (valid) {
-          this.$Message.success("Success!");
+          let data = {
+            passwd: this.formCustom.passwd,
+            email: this.formCustom.mail
+          };
+          axios.post("/login", data).then(res => {
+            if (res.data.code == 201) {
+              this.$Message.error("邮箱或密码错误");
+            } else {
+              this.$Message.success("登陆成功");
+              this.$store.state.x = res.data.data.x;
+              this.$router.push("index");
+            }
+          });
         } else {
-          this.$Message.error("Fail!");
+          this.$Message.error();
         }
       });
-    },
-    handleReset(name) {
-      this.$refs[name].resetFields();
     }
   }
 };
 </script>
+<style>
+.youxiang {
+  margin-top: 1rem;
+}
+</style>
+

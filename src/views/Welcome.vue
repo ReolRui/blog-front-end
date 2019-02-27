@@ -1,7 +1,7 @@
 <template>
   <div>
     <Row type="flex" justify="center">
-      <Col class-name="loing">
+      <Col class-name="loing" span="4">
         <Tabs value="login">
           <TabPane label="登录" name="login">
             <Login></Login>
