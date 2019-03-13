@@ -15,11 +15,10 @@
   </div>
 </template>
 <script>
-import Login from "../components/Login";
-import Register from "../components/Register";
+import Login from "../components/back/Login";
+import Register from "../components/back/Register";
 
 export default {
-  name: "app",
   components: {
     Login,
     Register

@@ -65,8 +65,8 @@ export default {
               this.$Message.error("邮箱或密码错误");
             } else {
               this.$Message.success("登陆成功");
-              this.$store.state.x = res.data.data.x;
-              this.$router.push("index");
+
+              this.$router.push("admin");
             }
           });
         } else {
@@ -77,7 +77,7 @@ export default {
   }
 };
 </script>
-<style>
+<style scoped>
 .youxiang {
   margin-top: 1rem;
 }

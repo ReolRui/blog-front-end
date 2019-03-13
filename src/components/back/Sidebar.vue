@@ -1,0 +1,63 @@
+<template>
+  <div>
+    <Row type="flex" justify="center" align="middle" class-name="tou">
+      <Col>
+        <h1>Create</h1>
+      </Col>
+    </Row>
+    <Row>
+      <div>
+        <Menu width="auto" @on-select="changepage">
+          <div v-for="(item, index) in list" :key="index">
+            <Submenu :name="index">
+              <template slot="title">{{item.name}}</template>
+              <div>
+                <MenuItem v-for="(ite, index) in item.list" :key="index" :name="ite">{{ite}}</MenuItem>
+              </div>
+            </Submenu>
+          </div>
+        </Menu>
+      </div>
+    </Row>
+  </div>
+</template>
+
+<script>
+export default {
+  data() {
+    return {};
+  },
+  created() {
+    axios.post("/getlist").then(res => {
+      this.$store.commit("updatelist", res.data.data);
+    });
+  },
+  computed: {
+    list() {
+      return this.$store.state.list;
+    }
+  },
+  methods: {
+    changepage(e) {
+      console.log(e);
+      let data = {
+        userid: this.$store.state.userid,
+        name: e
+      };
+      axios.post("/getarticle", data).then(res => {
+        this.$store.commit("changearticle", res.data.data);
+      });
+    }
+  }
+};
+</script>
+<style scoped>
+.tou {
+  background: #00bcd4;
+  color: #ffffff;
+  font-size: 22px;
+  height: 6rem;
+}
+</style>
+
+

@@ -14,7 +14,8 @@ let config = {
   timeout: 60 * 1000, // Timeout
   headers: {
     'Content-Type': 'application/x-www-form-urlencoded'
-  }
+  },
+
 
   // withCredentials: true, // Check cross-site Access-Control
 };
