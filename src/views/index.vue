@@ -1,9 +1,12 @@
 <template class="ibody">
   <div>
     <div class="tou">
-      <Row type="flex" justify="center">
+      <Row
+        type="flex"
+        justify="center"
+      >
         <Col span="24">
-          <Head></Head>
+        <Head></Head>
         </Col>
       </Row>
     </div>
@@ -12,7 +15,7 @@
     </Row>
     <Row>
       <Col span="24">
-        <router-view></router-view>
+      <router-view></router-view>
       </Col>
     </Row>
     <Row>

@@ -1,30 +1,71 @@
 
 <template>
-  <Form ref="formCustom" :model="formCustom" :rules="ruleCustom" :label-width="80">
-    <FormItem label="用户名" prop="name">
+  <Form
+    ref="formCustom"
+    :model="formCustom"
+    :rules="ruleCustom"
+    :label-width="80"
+  >
+    <FormItem
+      label="用户名"
+      prop="name"
+    >
       <Input v-model="formCustom.name"></Input>
     </FormItem>
-    <FormItem label="邮箱" prop="mail">
+    <FormItem
+      label="邮箱"
+      prop="mail"
+    >
       <Input
+        v-model="formCustom.mail"
         :search="!codebtn"
         :enter-button="codebtntext"
         @on-search="sendcode('formCustom')"
-        v-model="formCustom.mail"
       ></Input>
     </FormItem>
-    <FormItem v-if="codeinput" label="验证码" prop="code">
-      <Input type="text" v-model="formCustom.code" number></Input>
+    <FormItem
+      v-if="codeinput"
+      label="验证码"
+      prop="code"
+    >
+      <Input
+        v-model="formCustom.code"
+        type="text"
+        number
+      ></Input>
     </FormItem>
-    <FormItem label="密码" prop="passwd">
-      <Input type="password" v-model="formCustom.passwd"></Input>
+    <FormItem
+      label="密码"
+      prop="passwd"
+    >
+      <Input
+        v-model="formCustom.passwd"
+        type="password"
+      ></Input>
     </FormItem>
-    <FormItem label="重复密码" prop="passwdCheck">
-      <Input type="password" v-model="formCustom.passwdCheck"></Input>
+    <FormItem
+      label="重复密码"
+      prop="passwdCheck"
+    >
+      <Input
+        v-model="formCustom.passwdCheck"
+        type="password"
+      ></Input>
     </FormItem>
 
     <FormItem>
-      <Button type="primary" @click="handleSubmit('formCustom')">注册</Button>
-      <Button @click="handleReset('formCustom')" style="margin-left: 8px">清除</Button>
+      <Button
+        type="primary"
+        @click="handleSubmit('formCustom')"
+      >
+        注册
+      </Button>
+      <Button
+        style="margin-left: 8px"
+        @click="handleReset('formCustom')"
+      >
+        清除
+      </Button>
     </FormItem>
   </Form>
 </template>

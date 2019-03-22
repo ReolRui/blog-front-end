@@ -1,6 +1,6 @@
 <template>
   <Row class-name="foote" type="flex" justify="center" align="middle">
-    <Col>
+    <Col span="6">
       <h5>联系邮箱：liuxgu@qq.com</h5>
     </Col>
   </Row>

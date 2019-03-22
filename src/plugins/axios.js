@@ -10,7 +10,9 @@ var qs = require('qs');
 // axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 axios.defaults.withCredentials = true
 let config = {
-  baseURL: "http://localhost:3000",
+  baseURL: "http://www.liuxiaogu.cn:3000",
+  //baseURL: "http://119.29.177.240:3000",
+  //baseURL: "http://localhost:3000",
   timeout: 60 * 1000, // Timeout
   headers: {
     'Content-Type': 'application/x-www-form-urlencoded'
@@ -24,7 +26,7 @@ const _axios = axios.create(config);
 
 _axios.interceptors.request.use(
   function (config) {
-    console.log(config.baseURL + config.url)
+    //console.log(config.baseURL + config.url)
     if (config.method === 'post') {
       config.data = qs.stringify(config.data);
     }
@@ -40,7 +42,7 @@ _axios.interceptors.request.use(
 // Add a response interceptor
 _axios.interceptors.response.use(
   function (response) {
-    console.log(response)
+    //console.log(response)
 
 
     // Do something with response data

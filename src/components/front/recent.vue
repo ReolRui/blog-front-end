@@ -4,8 +4,8 @@
     <h1 style="padding-bottom:2rem">最近文章</h1>
     <Timeline>
       <TimelineItem v-for="(item, index) in list" :key="index">
-        <p class="time">{{item.createdAt.split('T')[0]}}</p>
-        <p class="content" :id="item.title" @click="toact">{{item.title}}</p>
+        <p class="time">{{ item.createdAt.split('T')[0] }}</p>
+        <p :id="item.title" class="content" @click="toact">{{ item.title }}</p>
       </TimelineItem>
     </Timeline>
   </div>
@@ -19,17 +19,17 @@ export default {
       list: ""
     };
   },
+  created() {
+    axios.post("/recent").then(res => {
+      //console.log(res.data.data);
+      this.list = res.data.data;
+    });
+  },
   methods: {
     toact(e) {
       console.log(e);
       this.$router.push({ name: "article", params: { name: e.path[0].id } });
     }
-  },
-  created() {
-    axios.post("/recent").then(res => {
-      console.log(res.data.data);
-      this.list = res.data.data;
-    });
   }
 };
 </script>

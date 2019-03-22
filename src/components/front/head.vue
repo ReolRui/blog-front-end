@@ -1,9 +1,9 @@
 <template>
   <div class="toplan" :class="iscl?'tou1':'tou2'">
     <Row type="flex" justify="center" align="middle">
-      <Col span="12">
-        <Row class-name="top" type="flex" align="middle">
-          <Col span="12">
+      <Col>
+        <Row class-name="top" type="flex" justify="space-around" align="middle" :gutter="200">
+          <Col>
             <Row type="flex" justify="center" align="middle">
               <div class="home" @click="tohome">
                 <Col span="12">
@@ -12,17 +12,14 @@
               </div>
             </Row>
           </Col>
-          <Col span="12">
-            <Menu mode="horizontal" @on-select="changepage">
+          <Col>
+            <Row type="flex" align="middle" :gutter="32">
               <div v-for="(item, index) in list" :key="index">
-                <Submenu :name="index">
-                  <template slot="title">{{item.name}}</template>
-                  <div>
-                    <MenuItem v-for="(ite, index) in item.list" :key="index" :name="ite">{{ite}}</MenuItem>
-                  </div>
-                </Submenu>
+                <Col>
+                  <h2 @click="tolist" :id="item._id" class="tap">{{item.name}}</h2>
+                </Col>
               </div>
-            </Menu>
+            </Row>
           </Col>
         </Row>
       </Col>
@@ -36,6 +33,11 @@ export default {
   data() {
     return { iscl: true };
   },
+  computed: {
+    list() {
+      return this.$store.state.list;
+    }
+  },
   mounted() {
     window.addEventListener("scroll", this.handleScroll);
   },
@@ -45,17 +47,15 @@ export default {
       this.$store.commit("updatelist", res.data.data);
     });
   },
-  computed: {
-    list() {
-      return this.$store.state.list;
-    }
-  },
   methods: {
+    atlist() {
+      //console.log("adwsd");
+    },
     tohome() {
       this.$router.push("/");
     },
-    changepage(e) {
-      this.$router.push({ name: "article", params: { name: e } });
+    tolist(e) {
+      this.$router.push({ name: "list", params: { name: e.target.id } });
     },
     handleScroll() {
       let scrollTop =
@@ -86,9 +86,22 @@ export default {
   opacity: 1;
 }
 .top {
-  max-width: 80rem;
+  min-width: 1350px;
 }
+
 .home {
   cursor: pointer;
+}
+.tap {
+  font-size: 17px;
+  color: #212121;
+  cursor: pointer;
+}
+
+.tap:hover {
+  color: #0288d1;
+}
+.tap:active {
+  color: #88d8fd;
 }
 </style>

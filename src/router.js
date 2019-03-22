@@ -37,7 +37,7 @@ const router = new Router({
         name: 'home'
       },
       {
-        path: '/list',
+        path: '/list/:name',
         component: List,
         name: 'list'
       },
@@ -53,9 +53,9 @@ const router = new Router({
   ]
 });
 router.beforeEach((to, from, next) => {
-  console.log(document.cookie)
+
   if ((!document.cookie) && to.path == '/admin') {
-    console.log('未登录，跳转中....')
+    //console.log('未登录，跳转中....')
     next({ name: 'welcome' })
 
   }

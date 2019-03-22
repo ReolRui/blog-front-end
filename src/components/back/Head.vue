@@ -1,8 +1,20 @@
 <template>
   <div>
-    <Row class-name="head" type="flex" justify="end" align="middle">
+    <Row
+      class-name="head"
+      type="flex"
+      justify="end"
+      align="middle"
+    >
       <Col span="3">
-        <Button type="default" icon="md-add" ghost @click="newarticle">新建文章</Button>
+      <Button
+        type="default"
+        icon="md-add"
+        ghost
+        @click="newarticle"
+      >
+        新建文章
+      </Button>
       </Col>
     </Row>
   </div>

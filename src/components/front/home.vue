@@ -1,7 +1,11 @@
 <template>
-  <Row type="flex" justify="center" align="middle">
+  <Row
+    type="flex"
+    justify="center"
+    align="middle"
+  >
     <Col>
-      <Recent></Recent>
+    <Recent></Recent>
     </Col>
   </Row>
 </template>
@@ -9,8 +13,8 @@
 <script>
 import Recent from "./recent";
 export default {
-  components: { Recent },
   name: "",
+  components: { Recent },
   data() {
     return {};
   }

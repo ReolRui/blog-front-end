@@ -1,16 +1,35 @@
 
 <template>
-  <Form ref="formCustom" :model="formCustom" :rules="ruleCustom" :label-width="80">
-    <FormItem label="邮箱" prop="mail">
+  <Form
+    ref="formCustom"
+    :model="formCustom"
+    :rules="ruleCustom"
+    :label-width="80"
+  >
+    <FormItem
+      label="邮箱"
+      prop="mail"
+    >
       <Input v-model="formCustom.mail"></Input>
     </FormItem>
 
-    <FormItem label="密码" prop="passwd">
-      <Input type="password" v-model="formCustom.passwd"></Input>
+    <FormItem
+      label="密码"
+      prop="passwd"
+    >
+      <Input
+        v-model="formCustom.passwd"
+        type="password"
+      ></Input>
     </FormItem>
 
     <FormItem>
-      <Button type="primary" @click="handleSubmit('formCustom')">Submit</Button>
+      <Button
+        type="primary"
+        @click="handleSubmit('formCustom')"
+      >
+        Submit
+      </Button>
     </FormItem>
   </Form>
 </template>

@@ -2,26 +2,29 @@
   <div>
     <Row>
       <Col span="3">
-        <Sidebar></Sidebar>
+      <Sidebar></Sidebar>
       </Col>
       <Col span="21">
-        <Row>
-          <Col>
-            <Head></Head>
-          </Col>
-        </Row>
-        <Row>
-          <Col offset="5" span="14">
-            <Card class="edit">
-              <Edit></Edit>
-            </Card>
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            <Foote></Foote>
-          </Col>
-        </Row>
+      <Row>
+        <Col>
+        <Head></Head>
+        </Col>
+      </Row>
+      <Row>
+        <Col
+          offset="5"
+          span="14"
+        >
+        <Card class="edit">
+          <Edit></Edit>
+        </Card>
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+        <Foote></Foote>
+        </Col>
+      </Row>
       </Col>
     </Row>
   </div>
@@ -34,13 +37,13 @@ import Foote from "../components/back/Foote";
 import Edit from "../components/back/Edit";
 
 export default {
+  name: "",
   components: {
     Head,
     Sidebar,
     Foote,
     Edit
   },
-  name: "",
   data() {
     return {};
   },

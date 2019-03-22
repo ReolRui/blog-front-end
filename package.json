@@ -10,6 +10,7 @@
   "dependencies": {
     "gsap": "^2.1.2",
     "iview": "^3.0.1",
+    "less": "^3.9.0",
     "less-loader": "^4.1.0",
     "mavon-editor": "^2.7.0",
     "md5-node": "^1.0.1",
@@ -27,6 +28,7 @@
     "@vue/cli-service": "^3.4.0",
     "axios": "^0.18.0",
     "babel-eslint": "^10.0.1",
+    "electron": "^4.1.1",
     "eslint": "^5.14.0",
     "eslint-plugin-vue": "^5.2.1",
     "iview-loader": "^1.2.2",

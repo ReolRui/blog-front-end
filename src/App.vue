@@ -1,12 +1,14 @@
-<template >
+<template>
   <div>
     <router-view></router-view>
   </div>
 </template>
 
 <script>
+//跳转异常
+
 export default {
-  name: "app",
+  name: "App",
   components: {}
 };
 </script>
@@ -14,6 +16,9 @@ export default {
 <style>
 .loing {
   padding-top: 20rem;
+}
+body {
+  -webkit-font-smoothing: antialiased;
 }
 #app {
   font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB",
@@ -25,3 +30,4 @@ export default {
   margin-top: 60px;
 }
 </style>
+

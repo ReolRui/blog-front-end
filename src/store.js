@@ -42,7 +42,7 @@ export default new Vuex.Store({
       state.lei = value
     },
     changearticle(state, data) {
-      console.log(data)
+      //console.log(data)
 
       state.content = data.content
       state.title = data.title

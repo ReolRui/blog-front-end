@@ -2,26 +2,26 @@
   <div>
     <Row class-name="title" type="flex" justify="center" align="middle">
       <Col>
-        <h2>{{title}}</h2>
+        <h2>{{ title }}</h2>
       </Col>
     </Row>
     <Row class-name="dateclass" type="flex" justify="center" align="middle">
       <Col>
-        <h6>发表于：{{date}}</h6>
+        <h6>发表于：{{ date }}</h6>
       </Col>
     </Row>
     <Row type="flex" justify="center" align="middle">
       <Col>
-        <Card>
+        <Card class="article">
           <mavon-editor
-            :boxShadow="yinying"
+            :box-shadow="yinying"
             class="md"
             :value="content"
             :subfield="prop.subfield"
-            :defaultOpen="prop.defaultOpen"
-            :toolbarsFlag="prop.toolbarsFlag"
+            :default-open="prop.defaultOpen"
+            :toolbars-flag="prop.toolbarsFlag"
             :editable="prop.editable"
-            :scrollStyle="prop.scrollStyle"
+            :scroll-style="prop.scrollStyle"
           ></mavon-editor>
         </Card>
       </Col>
@@ -32,22 +32,10 @@
 <script>
 export default {
   name: "",
-  watch: {
-    $route(to, from) {
-      axios.post("/getarticle", { name: this.$route.params.name }).then(res => {
-        this.$store.commit("changearticle", res.data.data);
-      });
-    }
-  },
   data() {
     return {
       yinying: false
     };
-  },
-  created() {
-    axios.post("/getarticle", { name: this.$route.params.name }).then(res => {
-      this.$store.commit("changearticle", res.data.data);
-    });
   },
   computed: {
     prop() {
@@ -72,6 +60,18 @@ export default {
     date() {
       return this.$store.state.date;
     }
+  },
+  watch: {
+    $route(to, from) {
+      axios.post("/getarticle", { name: this.$route.params.name }).then(res => {
+        this.$store.commit("changearticle", res.data.data);
+      });
+    }
+  },
+  created() {
+    axios.post("/getarticle", { name: this.$route.params.name }).then(res => {
+      this.$store.commit("changearticle", res.data.data);
+    });
   }
 };
 </script>
