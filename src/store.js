@@ -7,7 +7,7 @@ export default new Vuex.Store({
   state: {
     userid: null,
     content: '',
-    title: '        ',
+    title: '    ',
     lei: '',
     list: '',
     atid: '',
